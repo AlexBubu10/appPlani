@@ -1,0 +1,127 @@
+/* ===== Base / Paleta ===== */
+:root {
+  --brand-dark: #000000;
+  --brand-yellow: #facc15;        /* amarillo principal */
+  --brand-yellow-dark: #eab308;   /* amarillo más intenso */
+  --muted: #64748b;
+  --card-bg: #ffffff;
+  --ring: rgba(250, 204, 21, 0.25);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-yellow-dark) 100%);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Contenedores ===== */
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Cards BLANCAS para legibilidad (admin y público) */
+.card {
+  background: var(--card-bg);
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  color: #18181b;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== Header / Footer (unificados sin líneas) ===== */
+header, footer {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-yellow-dark) 100%) !important;
+  color: #fff;
+  border: none !important;
+}
+
+footer h2 { color: var(--brand-yellow) !important; font-weight: 800; }
+footer a { color: var(--brand-yellow) !important; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ===== Texto y enlaces generales ===== */
+.title {
+  font-size:1.5rem;
+  font-weight:800;
+  color:#fefce8;
+}
+.subtitle { font-size:.9rem; color: var(--muted); }
+.link { font-size:.9rem; color:#fefce8; opacity:.85; }
+.link:hover { opacity:1; }
+
+/* ===== Logo ===== */
+.logo { height: 48px; width: auto; object-fit: contain; }
+@media (max-width: 640px){ .logo { height: 36px; } }
+
+/* ===== Tabs ===== */
+#tabs { overflow-x: auto; white-space: nowrap; }
+.tab {
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: #fff;
+  color: #18181b;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  /* === Ajustes de espaciado header / título === */
+header {
+  /* más “altura visual” arriba y abajo */
+  padding-top: 1.75rem !important;
+  padding-bottom: 2.25rem !important;
+}
+header .title {
+  /* título más grande y con aire */
+  font-size: clamp(1.8rem, 2.2vw + 1rem, 2.4rem) !important;
+  line-height: 1.15 !important;
+  margin: 0 0 0.75rem 0 !important;
+}
+header .subtitle {
+  margin: 0 0 1rem 0 !important;
+}
+
+/* Si la fila de tabs (días) está justo debajo del title */
+#tabs {
+  margin-top: 0.75rem !important;    /* separa tabs del título */
+  padding-bottom: 0.25rem !important; /* evita que se “pegue” al borde */
+}
+
+/* También damos aire al contenido tras el header */
+main {
+  flex: 1;                 /* mantiene el footer abajo */
+  padding-top: 0.75rem;    /* separa el primer bloque del header */
+}
+
+/* === Footer más alto y cómodo === */
+footer {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+@media (min-width: 768px) {
+  footer {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+/* Por si los tabs necesitan un poquito + de aire en mobile */
+@media (max-width: 640px) {
+  #tabs { margin-top: 1rem !important; }
+}
+
+/* Extra: separa ligeramente cards del header si la primera está muy arriba */
+.card:first-of-type {
+  margin-top: 0.5rem;
+}
