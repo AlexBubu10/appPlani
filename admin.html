@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Planificacion CF — Admin (local)</title>
+  <title>Planificacion CF — Admin</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
-<body style="background:#fff;">
+<body>
   <header class="border-b">
     <div class="container py-6 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -19,14 +18,13 @@
           <h1 class="title">Planificacion CF — Admin</h1>
           <p id="currentMonth" class="subtitle"></p>
         </div>
-        </div>
       </div>
-  <a href="index.html" class="link">Ver público</a>
+      <a href="index.html" class="link">Ver público</a>
     </div>
   </header>
 
   <main class="container space-y-6 pb-16 pt-6">
-  <section class="card space-y-4">
+    <section class="card space-y-4">
       <div class="flex items-center justify-between">
         <h2 class="section-title">Editor de Planificaciones</h2>
       </div>
@@ -45,13 +43,14 @@
         </select>
       </div>
 
-      <!-- (Opcional) también dejo tabs por si te gusta tocar rápido -->
-      
+      <!-- Tabs de días -->
+      <div class="flex gap-2 flex-wrap" id="tabs"></div>
 
       <p class="muted">Editando: <b id="dayLabel">—</b></p>
       <input type="hidden" id="dayKey" value="" />
 
       <textarea id="planTextarea" rows="12" class="textarea" placeholder="Elegí un día para empezar a escribir..." disabled></textarea>
+
       <div class="flex justify-end gap-2">
         <button id="saveBtn" class="btn-success" disabled>Guardar planificación</button>
       </div>
@@ -60,25 +59,24 @@
   </main>
 
   <footer class="border-t mt-8">
-        <div class="container mx-auto py-6 px-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
-          
-          <!-- Marca del Gym o la App -->
-          <div>
-            <h2 class="font-bold text-sky-600 text-lg">Planificación CF</h2>
-            <p class="text-slate-500 text-sm">© 2025 Tu Empresa Fitness. Todos los derechos reservados.</p>
-          </div>
-      
-          <!-- Datos de desarrollador -->
-          <div class="mt-4 sm:mt-0">
-            <p class="text-slate-500 text-sm">
-              Desarrollado por 
-              <a href="https://tusitio.com" target="_blank" rel="noopener" class="text-sky-600 hover:underline">
-                ZonaTech
-              </a>
-            </p>
-            <p class="text-slate-500 text-sm">📧 zonazeroale10@gmail.com | 📱 +54 9 351 5168272</p>
-          </div>
-        </div>
+    <div class="container mx-auto py-6 px-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
+      <!-- Marca del Gym o la App -->
+      <div>
+        <h2 class="font-bold text-sky-600 text-lg">Planificación CF</h2>
+        <p class="text-slate-500 text-sm">© 2025 Tu Empresa Fitness. Todos los derechos reservados.</p>
+      </div>
+
+      <!-- Datos de desarrollador -->
+      <div class="mt-4 sm:mt-0">
+        <p class="text-slate-500 text-sm">
+          Desarrollado por 
+          <a href="https://tusitio.com" target="_blank" rel="noopener" class="text-sky-600 hover:underline">
+            ZonaTech
+          </a>
+        </p>
+        <p class="text-slate-500 text-sm">📧 zonazeroale10@gmail.com | 📱 +54 9 351 5168272</p>
+      </div>
+    </div>
   </footer>
 
   <script type="module" src="app-admin.js"></script>
