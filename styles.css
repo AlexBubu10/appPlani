@@ -35,7 +35,7 @@ body {
   padding: 1.5rem;
   color: #18181b;
   transition: box-shadow 0.3s, transform 0.3s;
-  max-width: 48rem;      /* ~768px = max-w-3xl */
+  max-width: 48rem;      
   margin-left: auto;
   margin-right: auto;
 }
@@ -51,7 +51,7 @@ header, footer {
   border: none !important;
 }
 
-/* Sutil separación sin “líneas feas” */
+/* separación sin líneas */
 header {
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
@@ -130,7 +130,7 @@ main {
   padding-top: 0.75rem;
 }
 
-/* Footer cómodo */
+/* Footer */
 footer {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;
