@@ -33,11 +33,34 @@ function getTodayKey(){
   const f=days.find(d=>d.dow===g);
   return f? f.key : "monday";
 }
+function resaltarPalabras(texto) {
+  const palabras = [
+    "Activación",
+    "Activación Específica",
+    "Bloque De Fuerza",
+    "Gimnásticos",
+    "Gimnástico",
+    "Bloque De Levantamiento",
+    "Accesorios",
+    "WOD",
+    "WOD 1",
+    "WOD 2",
+    "Acondicionamiento",
+    "Nota:"
+  ];
+  palabras.forEach(palabra => {
+    const regex = new RegExp(palabra, "gi");
+    texto = texto.replace(regex, match =>
+      `<b style="text-transform:uppercase; text-decoration:underline;">${match}</b>`
+    );
+  });
+  return texto;
+}
 function renderDay(dayKey){
   $$("[data-day]").forEach(b=>b.classList.remove("tab-active"));
   document.querySelector(`[data-day="${dayKey}"]`)?.classList.add("tab-active");
   const md=(cache[dayKey]||"").trim();
-  const html = md ? marked.parse(md)
+  const html = md ? resaltarPalabras(marked.parse(md))
                   : `<p class="text-slate-500">Todavía no hay planificación cargada para <b>${days.find(d=>d.key===dayKey)?.label||dayKey}</b>.</p>`;
   $("#studentContent").innerHTML = html;
 }
