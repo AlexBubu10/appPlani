@@ -1,8 +1,8 @@
 /* ===== Base / Paleta ===== */
 :root {
   --brand-dark: #000000;
-  --brand-yellow: #facc15;        /* amarillo principal */
-  --brand-yellow-dark: #eab308;   /* amarillo más intenso */
+  --brand-yellow: #1571fa;        /* amarillo principal */
+  --brand-yellow-dark: #184788;   /* amarillo más intenso */
   --muted: #64748b;
   --card-bg: #ffffff;
   --ring: rgba(250, 204, 21, 0.25);
@@ -74,21 +74,35 @@ footer a { color: var(--brand-yellow-dark) !important; }
 .link:hover { opacity: 1; }
 
 /* ===== Logo ===== */
-.logo { height: 48px; width: auto; object-fit: contain; }
+.logo { height: 120px; 
+  width: auto; 
+  object-fit: contain; 
+}
 @media (max-width: 640px){ .logo { height: 36px; } }
 
 /* ===== Tabs ===== */
-#tabs { overflow-x: auto; white-space: nowrap; }
+#tabs { 
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
 .tab {
-  padding: 0.55rem 1rem;
+  background: linear-gradient(90deg, #23272f 0%, #18181b 100%);
+  color: #fff;
   border-radius: 9999px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  background: #fff;
-  color: #18181b;
   border: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-} /* cierre correcto */
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: box-shadow 0.2s, background 0.3s;
+} 
+.tab:hover {
+  background: linear-gradient(90deg, #353945 0%, #23272f 100%);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
 
 /* === Espaciados globales === */
 header {
@@ -145,3 +159,50 @@ footer {
   justify-content: center;
 }
 
+.btn-success {
+  min-width: 180px;
+  background: linear-gradient(90deg, #23272f 0%, #18181b 100%);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  padding: .7rem 1.2rem;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+  outline: none;
+  cursor: pointer;
+}
+.btn-success:hover {
+  background: linear-gradient(90deg, #353945 0%, #23272f 100%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+  transform: translateY(-2px) scale(1.04);
+}
+
+header {
+  background-image: url(banner.png) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
+}
+
+body {
+  background-image: url('fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+footer {
+  background-image: url('fondo.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: #fff !important ; /* Asegura que el texto sea visible */
+}
+
+footer h2 {
+  color: #fff !important; /* blanco */
+  font-weight: 800 !important;
+}
