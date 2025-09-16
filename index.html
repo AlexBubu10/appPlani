@@ -19,6 +19,7 @@
           <p id="currentMonth" class="subtitle text-gray-200"></p>
         </div>
       </div>
+      <button id="buscarEjercicioBtn" class="btn-primary" style="margin-left:2rem;">🔍 Buscar ejercicio</button>
       <!-- link admin NO visible aquí -->
     </div>
   </header>
@@ -31,6 +32,17 @@
       <p class="note">Todas las consultas las hacemos por el grupo</p>
     </section>
   </main>
+
+  <!-- Modal de búsqueda de ejercicios -->
+  <div id="modalEjercicio">
+    <div class="modal-content">
+      <button class="close-modal" title="Cerrar">&times;</button>
+      <h2>Buscar ejercicio en YouTube</h2>
+      <input type="text" id="inputEjercicio" placeholder="Ej: sentadilla, push up...">
+      <button id="btnBuscarVideo" class="btn-primary" style="margin-top:0.5rem;">Buscar</button>
+      <div class="video-result" id="videoResult"></div>
+    </div>
+  </div>
 
   <footer class="border-t bg-white/80 backdrop-blur mt-8">
     <div class="container mx-auto py-6 px-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">

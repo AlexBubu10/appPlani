@@ -93,4 +93,72 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   }, (err)=>{
     console.error("[public] onSnapshot error:", err);
   });
+
+  // --- MODAL YOUTUBE ---
+  const modalEjercicio = document.getElementById('modalEjercicio');
+  const btnBuscarEjercicio = document.getElementById('buscarEjercicioBtn');
+  const btnCerrarModal = modalEjercicio.querySelector('.close-modal');
+  const btnBuscarVideo = document.getElementById('btnBuscarVideo');
+  const inputEjercicio = document.getElementById('inputEjercicio');
+  const videoResult = document.getElementById('videoResult');
+
+  btnBuscarEjercicio.addEventListener('click', () => {
+    modalEjercicio.classList.add('active');
+    inputEjercicio.value = '';
+    videoResult.innerHTML = '';
+    inputEjercicio.focus();
+  });
+  btnCerrarModal.addEventListener('click', () => {
+    modalEjercicio.classList.remove('active');
+    videoResult.innerHTML = '';
+  });
+  modalEjercicio.addEventListener('click', (e) => {
+    if (e.target === modalEjercicio) {
+      modalEjercicio.classList.remove('active');
+      videoResult.innerHTML = '';
+    }
+  });
+
+  btnBuscarVideo.addEventListener('click', async () => {
+    const query = inputEjercicio.value.trim();
+    if (!query) return;
+    videoResult.innerHTML = '<p>Buscando videos...</p>';
+    // API YouTube Data v3 (requiere API KEY)
+    const apiKey = 'AIzaSyDYBhaDEo1Cgnr8Uh-l2cyoA7_roGOozJg';
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&q=${encodeURIComponent(query)}&key=${apiKey}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.items && data.items.length > 0) {
+        // Mostrar miniaturas y títulos para elegir
+        videoResult.innerHTML = data.items.map((item, idx) => {
+          const videoId = item.id.videoId;
+          const title = item.snippet.title;
+          const thumb = item.snippet.thumbnails.medium.url;
+          return `
+            <div class="video-choice" style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+              <img src="${thumb}" alt="${title}" style="width:120px;border-radius:8px;cursor:pointer;" data-video="${videoId}">
+              <button class="btn-primary select-video" data-video="${videoId}" style="margin:0;">Ver</button>
+              <span style="flex:1;">${title}</span>
+            </div>
+          `;
+        }).join('');
+        // Evento para seleccionar video
+        videoResult.querySelectorAll('.select-video, img[data-video]').forEach(el => {
+          el.addEventListener('click', e => {
+            const vid = el.getAttribute('data-video');
+            videoResult.innerHTML = `<iframe width="100%" height="250" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe>`;
+          });
+        });
+      } else {
+        videoResult.innerHTML = '<p>No se encontró ningún video para ese ejercicio.</p>';
+      }
+    } catch (err) {
+      videoResult.innerHTML = '<p>Error al buscar el video.</p>';
+    }
+  });
+  inputEjercicio.addEventListener('keydown', e => {
+    if (e.key === 'Enter') btnBuscarVideo.click();
+  });
+  // --- FIN MODAL YOUTUBE ---
 });
