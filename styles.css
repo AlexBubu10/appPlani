@@ -276,3 +276,52 @@ footer h2 {
 #modalEjercicio .btn-primary:hover {
   background: #353945 !important;
 }
+
+/* Modal para la calculadora de porcentaje */
+#modalCalculadora.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(30, 41, 59, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+#modalCalculadora.active { display: flex; }
+#modalCalculadora .modal-content {
+  background: #fff;
+  color: #18181b;
+  border-radius: 1.25rem;
+  padding: 2rem 1.5rem;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+#modalCalculadora .close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+}
+#modalCalculadora input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+#abrirCalculadoraBtn {
+  position: static;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}

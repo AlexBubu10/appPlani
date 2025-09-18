@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     console.error("[public] onSnapshot error:", err);
   });
 
-  // --- MODAL YOUTUBE ---
+  // MODAL YOUTUBE
   const modalEjercicio = document.getElementById('modalEjercicio');
   const btnBuscarEjercicio = document.getElementById('buscarEjercicioBtn');
   const btnCerrarModal = modalEjercicio.querySelector('.close-modal');
@@ -123,14 +123,14 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     const query = inputEjercicio.value.trim();
     if (!query) return;
     videoResult.innerHTML = '<p>Buscando videos...</p>';
-    // API YouTube Data v3 (requiere API KEY)
+    // API YouTube Data v3
     const apiKey = 'AIzaSyDYBhaDEo1Cgnr8Uh-l2cyoA7_roGOozJg';
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=3&q=${encodeURIComponent(query)}&key=${apiKey}`;
     try {
       const res = await fetch(url);
       const data = await res.json();
       if (data.items && data.items.length > 0) {
-        // Mostrar miniaturas y títulos para elegir
+        // Muestra miniaturas y títulos para elegir
         videoResult.innerHTML = data.items.map((item, idx) => {
           const videoId = item.id.videoId;
           const title = item.snippet.title;
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
             </div>
           `;
         }).join('');
-        // Evento para seleccionar video
+        //seleccionar video
         videoResult.querySelectorAll('.select-video, img[data-video]').forEach(el => {
           el.addEventListener('click', e => {
             const vid = el.getAttribute('data-video');
@@ -160,5 +160,39 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   inputEjercicio.addEventListener('keydown', e => {
     if (e.key === 'Enter') btnBuscarVideo.click();
   });
-  // --- FIN MODAL YOUTUBE ---
+  //FIN MODAL YOUTUBE
+
+  // === CALCULADORA DE PORCENTAJE ===
+  const modalCalculadora = document.getElementById('modalCalculadora');
+  const btnAbrirCalculadora = document.getElementById('abrirCalculadoraBtn');
+  const btnCerrarCalculadora = modalCalculadora.querySelector('.close-modal');
+  const btnCalcularPorcentaje = document.getElementById('btnCalcularPorcentaje');
+  const inputPesoMax = document.getElementById('inputPesoMax');
+  const inputPorcentaje = document.getElementById('inputPorcentaje');
+  const resultadoPorcentaje = document.getElementById('resultadoPorcentaje');
+
+  btnAbrirCalculadora.addEventListener('click', () => {
+    modalCalculadora.classList.add('active');
+    inputPesoMax.value = '';
+    inputPorcentaje.value = '';
+    resultadoPorcentaje.textContent = '';
+    inputPesoMax.focus();
+  });
+  btnCerrarCalculadora.addEventListener('click', () => {
+    modalCalculadora.classList.remove('active');
+  });
+  modalCalculadora.addEventListener('click', (e) => {
+    if (e.target === modalCalculadora) modalCalculadora.classList.remove('active');
+  });
+  btnCalcularPorcentaje.addEventListener('click', () => {
+    const peso = parseFloat(inputPesoMax.value);
+    const porc = parseFloat(inputPorcentaje.value);
+    if (isNaN(peso) || isNaN(porc) || peso <= 0 || porc <= 0 || porc > 100) {
+      resultadoPorcentaje.textContent = 'Por favor, ingresa valores válidos.';
+      return;
+    }
+    const resultado = (peso * porc / 100).toFixed(2);
+    resultadoPorcentaje.textContent = `El peso a usar es: ${resultado} kg`;
+  });
+  // FIN CALCULADORA DE PORCENTAJE
 });

@@ -19,7 +19,10 @@
           <p id="currentMonth" class="subtitle text-gray-200"></p>
         </div>
       </div>
-      <button id="buscarEjercicioBtn" class="btn-primary" style="margin-left:2rem;">🔍 Buscar ejercicio</button>
+      <div class="flex items-center">
+        <button id="buscarEjercicioBtn" class="btn-primary" style="margin-left:2rem;">🔍 Buscar ejercicio</button>
+        <button id="abrirCalculadoraBtn" class="btn-primary" style="margin-left:1rem;">🧮 Calculadora de porcentajes</button>
+      </div>
       <!-- link admin NO visible aquí -->
     </div>
   </header>
@@ -41,6 +44,20 @@
       <input type="text" id="inputEjercicio" placeholder="Ej: sentadilla, push up...">
       <button id="btnBuscarVideo" class="btn-primary" style="margin-top:0.5rem;">Buscar</button>
       <div class="video-result" id="videoResult"></div>
+    </div>
+  </div>
+
+  <!-- Modal Calculadora de Porcentaje -->
+  <div id="modalCalculadora" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" title="Cerrar">&times;</button>
+      <h2>Calculadora de Porcentaje</h2>
+      <label for="inputPesoMax">Peso máximo (kg):</label>
+      <input type="number" id="inputPesoMax" min="1" placeholder="Ej: 100">
+      <label for="inputPorcentaje">Porcentaje (%):</label>
+      <input type="number" id="inputPorcentaje" min="1" max="100" placeholder="Ej: 80">
+      <button id="btnCalcularPorcentaje" class="btn-primary" style="margin-top:0.5rem;">Calcular</button>
+      <div id="resultadoPorcentaje" style="margin-top:1rem;font-weight:bold;"></div>
     </div>
   </div>
 

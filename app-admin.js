@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   await loadPlans();           // trae lo que haya en Firestore
   $("#saveBtn").addEventListener("click", savePlan);
 
-  // Atajo Ctrl/Cmd+S
+  // Atajo Ctrl/Cmd+S para guardar
   document.addEventListener("keydown",(e)=>{
     const isSave=(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s";
     if(isSave){ e.preventDefault(); $("#saveBtn").click(); }
