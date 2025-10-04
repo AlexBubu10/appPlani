@@ -1,4 +1,4 @@
-// app-admin.js (Firestore + PIN)
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import firebaseConfig from "./firebase-config.js?v=6";
@@ -15,7 +15,7 @@ const days = [
   { key:"wednesday", label:"Miércoles" },
   { key:"thursday", label:"Jueves" },
   { key:"friday", label:"Viernes" },
-  { key:"saturday", label:"Sábado" }, // si lo vas a usar
+  { key:"saturday", label:"Sábado" }, // sábado
 ];
 
 let cache = {};

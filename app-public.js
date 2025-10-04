@@ -1,4 +1,4 @@
-// app-public.js (Firestore realtime, importes por CDN)
+// app-public.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, doc, onSnapshot, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
@@ -18,7 +18,7 @@ const days = [
   { key:"wednesday", label:"Miércoles", dow:3 },
   { key:"thursday", label:"Jueves", dow:4 },
   { key:"friday", label:"Viernes", dow:5 },
-  { key:"saturday", label:"Sábado", dow:6 }, // si querés sábado
+  { key:"saturday", label:"Sábado", dow:6 }, // sábado
 ];
 
 let cache = {};
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
   });
   //FIN MODAL YOUTUBE
 
-  // === CALCULADORA DE PORCENTAJE ===
+  // CALCULADORA DE PORCENTAJE
   const modalCalculadora = document.getElementById('modalCalculadora');
   const btnAbrirCalculadora = document.getElementById('abrirCalculadoraBtn');
   const btnCerrarCalculadora = modalCalculadora.querySelector('.close-modal');
